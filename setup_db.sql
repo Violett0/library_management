@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS books (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(100),
+    image_url VARCHAR(255) DEFAULT 'https://via.placeholder.com/150',
     status ENUM('available', 'borrowed') DEFAULT 'available'
 );
 

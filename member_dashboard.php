@@ -30,6 +30,7 @@ $books_result = $conn->query($sql);
         <h2>Books List</h2>
         <table>
             <tr>
+                <th>Image</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Status</th>
@@ -37,6 +38,7 @@ $books_result = $conn->query($sql);
             </tr>
             <?php while($book = $books_result->fetch_assoc()): ?>
                 <tr>
+                    <td><img src="<?php echo $book['image_url']; ?>" alt="Book Image" style="width: 50px; height: 75px; object-fit: cover; border-radius: 4px;"></td>
                     <td><?php echo $book['title']; ?></td>
                     <td><?php echo $book['author']; ?></td>
                     <td class="status-<?php echo $book['status']; ?>"><?php echo ucfirst($book['status']); ?></td>

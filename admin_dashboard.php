@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-$books_sql = "SELECT b.title, b.author, b.status, u.username as borrower FROM books b LEFT JOIN borrow_history bh ON b.id = bh.book_id AND bh.status = 'borrowing' LEFT JOIN users u ON bh.user_id = u.id";
+$books_sql = "SELECT b.id, b.title, b.author, b.status, b.image_url, u.username as borrower FROM books b LEFT JOIN borrow_history bh ON b.id = bh.book_id AND bh.status = 'borrowing' LEFT JOIN users u ON bh.user_id = u.id";
 $books_result = $conn->query($books_sql);
 
 $users_sql = "SELECT id, username, role FROM users WHERE role = 'member'";
@@ -33,6 +33,7 @@ $users_result = $conn->query($users_sql);
         <h2>Books Status</h2>
         <table>
             <tr>
+                <th>Image</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Status</th>
@@ -40,6 +41,7 @@ $users_result = $conn->query($users_sql);
             </tr>
             <?php while($book = $books_result->fetch_assoc()): ?>
                 <tr>
+                    <td><img src="<?php echo $book['image_url']; ?>" alt="Book Image" style="width: 40px; height: 60px; object-fit: cover; border-radius: 4px;"></td>
                     <td><?php echo $book['title']; ?></td>
                     <td><?php echo $book['author']; ?></td>
                     <td class="status-<?php echo $book['status']; ?>"><?php echo ucfirst($book['status']); ?></td>

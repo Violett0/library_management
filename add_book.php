@@ -11,8 +11,9 @@ $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $conn->real_escape_string($_POST['title']);
     $author = $conn->real_escape_string($_POST['author']);
+    $image_url = $conn->real_escape_string($_POST['image_url']);
 
-    $sql = "INSERT INTO books (title, author) VALUES ('$title', '$author')";
+    $sql = "INSERT INTO books (title, author, image_url) VALUES ('$title', '$author', '$image_url')";
     if ($conn->query($sql) === TRUE) {
         $message = "Book added successfully!";
     } else {
@@ -40,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form method="POST">
             <input type="text" name="title" placeholder="Book Title" required>
             <input type="text" name="author" placeholder="Author" required>
+            <input type="text" name="image_url" placeholder="Image URL (e.g., https://example.com/book.jpg)" value="https://via.placeholder.com/150">
             <button type="submit">Add Book</button>
         </form>
     </div>
