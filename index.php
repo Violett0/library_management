@@ -2,6 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 session_start();
 
 if (isset($_SESSION['user_id'])) {
@@ -12,6 +13,7 @@ if (isset($_SESSION['user_id'])) {
     }
     exit();
 } else {
+    // If not logged in, redirect to login
     header("Location: login.php");
     exit();
 }

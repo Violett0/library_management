@@ -1,3 +1,5 @@
+-- Run this SQL in your hosting's phpMyAdmin (Select database s673190121 first)
+
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -25,4 +27,6 @@ CREATE TABLE IF NOT EXISTS borrow_history (
 );
 
 -- Default admin account (password: admin123)
-INSERT IGNORE INTO users (username, password, role) VALUES ('admin', '$2y$12$O3tTtl7eHKsA6LSIPBZ9Jewm.wHC129YlHEqxNdFMmyydAHJpBux2', 'admin');
+-- Hash: $2y$12$O3tTtl7eHKsA6LSIPBZ9Jewm.wHC129YlHEqxNdFMmyydAHJpBux2
+INSERT INTO users (username, password, role) VALUES ('admin', '$2y$12$O3tTtl7eHKsA6LSIPBZ9Jewm.wHC129YlHEqxNdFMmyydAHJpBux2', 'admin')
+ON DUPLICATE KEY UPDATE id=id;
