@@ -24,4 +24,4 @@ CREATE TABLE IF NOT EXISTS borrow_history (
 );
 
 -- Default admin account (password: admin123)
-INSERT IGNORE INTO users (username, password, role) VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
+INSERT IGNORE INTO users (username, password, role) VALUES ('admin', '$2y$12$O3tTtl7eHKsA6LSIPBZ9Jewm.wHC129YlHEqxNdFMmyydAHJpBux2', 'admin');
