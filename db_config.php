@@ -1,14 +1,21 @@
 <?php
-// Hosting Configuration for BNCC
+// Simple Database Config
 $servername = "localhost";
-$username = "s673190121";  // Username from Hosting
-$password = "s673190121";  // Password from Hosting
-$dbname = "s673190121";    // Database Name from Hosting
+$username = "s673190121"; 
+$password = "s673190121"; 
+$dbname = "s673190121";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+mysqli_report(MYSQLI_REPORT_OFF); // Turn off exceptions
 
-if ($conn->connect_error) {
-    // Show user-friendly error
-    die("<h1 style='color:red;'>Connection Failed: " . $conn->connect_error . "</h1><p>Please check your database credentials in <b>db_config.php</b>.</p>");
+try {
+    $conn = @new mysqli($servername, $username, $password, $dbname);
+    
+    if ($conn->connect_error) {
+        $db_status = "Connection Failed: " . $conn->connect_error;
+    } else {
+        $db_status = "Connected Successfully!";
+    }
+} catch (Exception $e) {
+    $db_status = "Fatal Error: " . $e->getMessage();
 }
 ?>
